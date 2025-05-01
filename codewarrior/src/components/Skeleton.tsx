@@ -14,7 +14,7 @@ export const Skeleton = ({
   height = 20,
   style,
   borderRadius = 4
-}) => {
+}: SkeletonProps) => {
   const animatedValue = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
@@ -69,7 +69,7 @@ export const SkeletonGroup = ({
   times = 1,
   marginBottom = 16,
   children
-}) => {
+}: SkeletonGroupProps) => {
   return (
     <>
       {Array.from({ length: times }).map((_, index) => (

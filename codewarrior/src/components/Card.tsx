@@ -22,7 +22,7 @@ export const Card = ({
   style,
   elevation: elevationProp = 'medium',
   variant = 'default',
-}) => {
+}: CardProps) => {
   const Container = onPress ? TouchableOpacity : View;
 
   const getElevationStyle = () => {

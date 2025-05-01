@@ -13,7 +13,7 @@ export const RankBadge = ({
   rank,
   level,
   size = 'medium'
-}) => {
+}: RankBadgeProps) => {
 
   const getSizeStyles = () => {
     switch (size) {

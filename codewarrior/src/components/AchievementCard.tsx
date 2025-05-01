@@ -14,7 +14,7 @@ export const AchievementCard = ({
   achievement,
   progress,
   isEarned = false
-}) => {
+}: AchievementCardProps) => {
   return (
     <View style={[styles.container, styles.cardElevation]}>
       <View style={styles.header}>

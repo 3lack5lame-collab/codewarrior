@@ -19,7 +19,7 @@ export const ProgressMilestone = ({
   maxProgress,
   icon = 'star',
   isCompleted = false,
-}) => {
+}: ProgressMilestoneProps) => {
   const progressPercentage = (progress / maxProgress) * 100;
 
   return (

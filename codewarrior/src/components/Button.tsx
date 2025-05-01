@@ -38,7 +38,7 @@ export const Button = ({
   iconPosition = 'left',
   style,
   textStyle,
-}) => {
+}: ButtonProps) => {
   const getVariantStyles = (): ViewStyle => {
     switch (variant) {
       case 'secondary':

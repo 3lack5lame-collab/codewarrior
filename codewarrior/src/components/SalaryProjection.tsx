@@ -12,7 +12,7 @@ export const SalaryProjection = ({
   currentSalary,
   potentialSalary,
   timeframe = '1-2 years'
-}) => {
+}: SalaryProjectionProps) => {
   const formatSalary = (amount: number) =>
     `$${amount.toLocaleString()}`;
 

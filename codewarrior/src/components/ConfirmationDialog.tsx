@@ -25,7 +25,7 @@ export const ConfirmationDialog = ({
   onCancel,
   type = 'default',
   icon
-}) => {
+}: ConfirmationDialogProps) => {
   const getColors = () => {
     switch (type) {
       case 'warning':

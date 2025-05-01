@@ -1,50 +1,102 @@
 
-# TypeScript
+# CodeWarrior
 
-[![CI](https://github.com/microsoft/TypeScript/actions/workflows/ci.yml/badge.svg)](https://github.com/microsoft/TypeScript/actions/workflows/ci.yml)
-[![npm version](https://badge.fury.io/js/typescript.svg)](https://www.npmjs.com/package/typescript)
-[![Downloads](https://img.shields.io/npm/dm/typescript.svg)](https://www.npmjs.com/package/typescript)
-[![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/microsoft/TypeScript/badge)](https://securityscorecards.dev/viewer/?uri=github.com/microsoft/TypeScript)
+CodeWarrior is a gamified coding education platform that helps users learn programming skills, track their progress, and explore career paths.
 
+## Features
 
-[TypeScript](https://www.typescriptlang.org/) is a language for application-scale JavaScript. TypeScript adds optional types to JavaScript that support tools for large-scale JavaScript applications for any browser, for any host, on any OS. TypeScript compiles to readable, standards-based JavaScript. Try it out at the [playground](https://www.typescriptlang.org/play/), and stay up to date via [our blog](https://blogs.msdn.microsoft.com/typescript) and [Twitter account](https://twitter.com/typescript).
+- User authentication with Supabase
+- Progress tracking and rank system
+- Course management with levels and points
+- Career path recommendations
+- Achievement system
+- Profile management
 
-Find others who are using TypeScript at [our community page](https://www.typescriptlang.org/community/).
+## Tech Stack
 
-## Installing
+- React Native / Expo
+- TypeScript
+- Supabase (Authentication, Database)
+- React Navigation
 
-For the latest stable version:
+## Getting Started
 
-```bash
-npm install -D typescript
+### Prerequisites
+
+- Node.js (v14 or later)
+- npm or yarn
+- Expo CLI
+- Supabase account
+
+### Installation
+
+1. Clone the repository:
+   ```
+   git clone https://github.com/yourusername/codewarrior.git
+   cd codewarrior
+   ```
+
+2. Install dependencies:
+   ```
+   npm install
+   ```
+
+3. Create a Supabase project:
+   - Sign up at [supabase.com](https://supabase.com)
+   - Create a new project
+   - Run the schema.sql script in the SQL Editor
+
+4. Set up environment variables:
+   - Update the Supabase URL and anon key in the `.env` file
+
+5. Start the development server:
+   ```
+   npm start
+   ```
+
+6. Run on your device or emulator:
+   - Press `a` to run on Android
+   - Press `i` to run on iOS
+   - Press `w` to run on web
+
+## Project Structure
+
+```
+codewarrior/
+├── src/
+│   ├── assets/         # Images, fonts, etc.
+│   ├── components/     # Reusable components
+│   ├── constants/      # Constants and theme
+│   ├── contexts/       # React contexts
+│   ├── hooks/          # Custom hooks
+│   ├── lib/            # Library code
+│   ├── screens/        # Screen components
+│   ├── services/       # API services
+│   ├── types/          # TypeScript type definitions
+│   ├── App.tsx         # Main app component
+│   └── index.tsx       # Entry point
+├── .env                # Environment variables
+├── app.json            # Expo configuration
+├── babel.config.js     # Babel configuration
+├── package.json        # Dependencies
+├── schema.sql          # Database schema
+└── tsconfig.json       # TypeScript configuration
 ```
 
-For our nightly builds:
+## Database Schema
 
-```bash
-npm install -D typescript@next
-```
+The application uses the following tables:
 
-## Contribute
-
-There are many ways to [contribute](https://github.com/microsoft/TypeScript/blob/main/CONTRIBUTING.md) to TypeScript.
-* [Submit bugs](https://github.com/microsoft/TypeScript/issues) and help us verify fixes as they are checked in.
-* Review the [source code changes](https://github.com/microsoft/TypeScript/pulls).
-* Engage with other TypeScript users and developers on [StackOverflow](https://stackoverflow.com/questions/tagged/typescript).
-* Help each other in the [TypeScript Community Discord](https://discord.gg/typescript).
-* Join the [#typescript](https://twitter.com/search?q=%23TypeScript) discussion on Twitter.
-* [Contribute bug fixes](https://github.com/microsoft/TypeScript/blob/main/CONTRIBUTING.md).
-
-This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information see
-the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com)
-with any additional questions or comments.
-
-## Documentation
-
-*  [TypeScript in 5 minutes](https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html)
-*  [Programming handbook](https://www.typescriptlang.org/docs/handbook/intro.html)
-*  [Homepage](https://www.typescriptlang.org/)
-
-## Roadmap
-
-For details on our planned features and future direction, please refer to our [roadmap](https://github.com/microsoft/TypeScript/wiki/Roadmap).
+- profiles: User profiles
+- ranks: User ranks and levels
+- skills: Programming skills
+- user_skills: User's acquired skills
+- courses: Available courses
+- levels: Course levels
+- completed_levels: User's completed levels
+- career_paths: Career path recommendations
+- achievements: Available achievements
+- user_achievements: User's earned achievements
+- challenges: Coding challenges
+- user_challenges: User's challenge progress
+- user_progress: User's overall progress

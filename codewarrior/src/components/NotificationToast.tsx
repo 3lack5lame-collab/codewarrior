@@ -11,7 +11,7 @@ interface NotificationToastProps {
 export const NotificationToast = ({
   notification,
   onClose
-}) => {
+}: NotificationToastProps) => {
 
   const getBackgroundColor = () => {
     switch (notification.type) {
