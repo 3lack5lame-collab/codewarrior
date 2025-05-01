@@ -1,3 +1,7 @@
+export interface CareerStage {
+  skills: string[];
+}
+
 export interface Rank {
   id: number;
   name: string;
@@ -8,19 +12,11 @@ export interface Rank {
   careerStage: CareerStage;
 }
 
-export interface CareerStage {
-  title: string;
-  roles: string[];
-  salaryRange: string;
-  skills: string[];
-  responsibilities: string[];
-}
-
-export interface Requirements {
-  courseLevels: string[];
-  projects: number;
-  skills: string[];
-  experience?: string;
+export interface Badge {
+  id: string;
+  name: string;
+  description: string;
+  imageUrl: string;
 }
 
 export interface CourseLevel {
@@ -32,18 +28,6 @@ export interface CourseLevel {
   points: number;
 }
 
-export interface Badge {
-  id: string;
-  name: string;
-  description: string;
-  imageUrl?: string;
-  requirements?: {
-    courseLevelId?: string;
-    pointsNeeded?: number;
-    skillsNeeded?: string[];
-  };
-}
-
 export interface Course {
   id: number;
   code: string;
@@ -52,20 +36,16 @@ export interface Course {
   minRankId: number;
   imageUrl: string;
   levels: CourseLevel[];
-  prerequisites?: string[];
-  careers?: CareerPath[];
 }
 
 export interface CareerPath {
-  id?: number;
+  id: number;
   title: string;
   description: string;
   requiredSkills: string[];
-  minRankId?: number;
+  minRankId: number;
   salaryRange: string;
-  imageUrl?: string;
-  potentialRoles?: string[];
-  industryDemand?: "Low" | "Medium" | "High";
+  imageUrl: string;
 }
 
 export interface Challenge {
