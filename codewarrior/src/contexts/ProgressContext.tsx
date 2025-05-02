@@ -1,4 +1,5 @@
-import React, { createContext, useContext } from 'react';
+import * as React from 'react';
+const { createContext, useContext } = React;
 import { useProgress } from '../hooks/useProgress';
 
 // Define the type explicitly
@@ -21,10 +22,10 @@ const ProgressContext = createContext(undefined as unknown as ProgressContextTyp
 export const ProgressProvider = ({ children }: { children: any }) => {
   const progress = useProgress();
 
-  return (
-    <ProgressContext.Provider value={progress}>
-      {children}
-    </ProgressContext.Provider>
+  return React.createElement(
+    ProgressContext.Provider,
+    { value: progress },
+    children
   );
 };
 

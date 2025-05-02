@@ -1,4 +1,5 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import * as React from 'react';
+const { createContext, useContext, useState, useEffect } = React;
 import { AuthService, AuthUser } from '../services/AuthService';
 
 interface AuthContextType {
@@ -11,7 +12,7 @@ interface AuthContextType {
   updateProfile: (profile: { username?: string; avatarUrl?: string }) => Promise<{ success: boolean; error: Error | null }>;
 }
 
-const AuthContext = createContext<any>(undefined);
+const AuthContext = createContext(undefined as unknown as AuthContextType);
 
 export const AuthProvider = ({ children }: { children: any }) => {
   const [user, setUser] = useState<AuthUser | null>(null);

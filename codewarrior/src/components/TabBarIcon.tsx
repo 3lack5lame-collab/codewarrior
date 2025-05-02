@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { colors } from '../constants/theme';
 
@@ -15,11 +15,9 @@ export const TabBarIcon = ({
   color = colors.primary,
   size = 24
 }: TabBarIconProps) => {
-  return (
-    <Icon
-      name={name}
-      size={size}
-      color={focused ? color : colors.text.disabled}
-    />
-  );
+  return React.createElement(Icon, {
+    name: name,
+    size: size,
+    color: focused ? color : colors.text.disabled
+  });
 };

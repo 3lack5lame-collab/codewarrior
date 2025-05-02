@@ -1,4 +1,5 @@
-import React, { createContext, useContext } from 'react';
+import * as React from 'react';
+const { createContext, useContext } = React;
 import { View } from 'react-native';
 import { useNotifications, Notification } from '../hooks/useNotifications';
 import { NotificationToast } from '../components/NotificationToast';
@@ -15,28 +16,32 @@ export const NotificationProvider = ({ children }: { children: any }) => {
     clearNotifications
   } = useNotifications();
 
-  return (
-    <NotificationContext.Provider
-      value={{
+  const notificationsView = React.createElement(
+    View,
+    { style: { position: 'absolute', top: 0, left: 0, right: 0 } },
+    notifications.map((notification: any) =>
+      React.createElement(NotificationToast, {
+        key: notification.id,
+        notification: notification,
+        onClose: removeNotification
+      })
+    )
+  );
+
+  return React.createElement(
+    NotificationContext.Provider,
+    {
+      value: {
         notifications,
         notifyAchievement,
         notifyRankUp,
         notifyLevelComplete,
         removeNotification,
         clearNotifications
-      }}
-    >
-      {children}
-      <View style={{ position: 'absolute', top: 0, left: 0, right: 0 }}>
-        {notifications.map((notification: any) => (
-          <NotificationToast
-            key={notification.id}
-            notification={notification}
-            onClose={removeNotification}
-          />
-        ))}
-      </View>
-    </NotificationContext.Provider>
+      }
+    },
+    children,
+    notificationsView
   );
 };
 
