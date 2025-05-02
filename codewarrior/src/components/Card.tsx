@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import {
   View,
   TouchableOpacity,
@@ -16,14 +16,14 @@ interface CardProps {
   variant?: 'default' | 'outlined';
 }
 
-export const Card = ({
-  children,
-  onPress,
-  style,
-  elevation: elevationProp = 'medium',
-  variant = 'default',
-}: CardProps) => {
-  const Container = onPress ? TouchableOpacity : View;
+export const Card = (props: CardProps) => {
+  const {
+    children,
+    onPress,
+    style,
+    elevation: elevationProp = 'medium',
+    variant = 'default',
+  } = props;
 
   const getElevationStyle = () => {
     if (variant === 'outlined') return {};
@@ -39,19 +39,29 @@ export const Card = ({
     }
   };
 
-  return (
-    <Container
-      style={[
-        styles.card,
-        variant === 'outlined' && styles.outlined,
-        getElevationStyle(),
-        style,
-      ]}
-      onPress={onPress}
-      activeOpacity={onPress ? 0.7 : 1}
-    >
-      {children}
-    </Container>
+  const cardStyle = [
+    styles.card,
+    variant === 'outlined' && styles.outlined,
+    getElevationStyle(),
+    style,
+  ];
+
+  if (onPress) {
+    return React.createElement(
+      TouchableOpacity,
+      {
+        style: cardStyle,
+        onPress: onPress,
+        activeOpacity: 0.7
+      },
+      children
+    );
+  }
+
+  return React.createElement(
+    View,
+    { style: cardStyle },
+    children
   );
 };
 
