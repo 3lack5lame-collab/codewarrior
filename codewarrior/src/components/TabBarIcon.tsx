@@ -9,12 +9,12 @@ interface TabBarIconProps {
   size?: number;
 }
 
-export const TabBarIcon: React.FC<TabBarIconProps> = ({
+export const TabBarIcon = ({
   name,
   focused,
   color = colors.primary,
   size = 24
-}) => {
+}: TabBarIconProps) => {
   return (
     <Icon
       name={name}

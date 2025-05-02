@@ -1,13 +1,10 @@
 import { createClient } from '@supabase/supabase-js';
-import Constants from 'expo-constants';
 import 'react-native-url-polyfill/auto';
+import { SUPABASE_URL, SUPABASE_ANON_KEY } from '@env';
 
 // Initialize Supabase client
-const supabaseUrl = process.env.SUPABASE_URL || '';
-const supabaseAnonKey = process.env.SUPABASE_ANON_KEY || '';
-
-if (!supabaseUrl || !supabaseAnonKey) {
-  console.error('Missing Supabase URL or Anonymous Key. Check your environment variables.');
+if (!SUPABASE_URL || !SUPABASE_ANON_KEY) {
+  console.error('Missing Supabase URL or Anonymous Key. Check your .env file.');
 }
 
-export const supabase = createClient(supabaseUrl, supabaseAnonKey);
+export const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);

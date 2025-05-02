@@ -8,6 +8,9 @@ export const colors = {
     background: '#FFEBEE',
     text: '#B00020'
   },
+  success: '#4CAF50',
+  warning: '#FFC107',
+  info: '#2196F3',
   text: {
     primary: '#000000',
     secondary: '#666666',

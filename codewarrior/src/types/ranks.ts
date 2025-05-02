@@ -69,7 +69,7 @@ export interface CareerPath {
 }
 
 export interface Challenge {
-  id: string;
+  id: number;
   title: string;
   description: string;
   deadline: string;

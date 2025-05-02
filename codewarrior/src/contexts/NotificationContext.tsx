@@ -3,18 +3,9 @@ import { View } from 'react-native';
 import { useNotifications, Notification } from '../hooks/useNotifications';
 import { NotificationToast } from '../components/NotificationToast';
 
-interface NotificationContextType {
-  notifications: Notification[];
-  notifyAchievement: ReturnType<typeof useNotifications>['notifyAchievement'];
-  notifyRankUp: ReturnType<typeof useNotifications>['notifyRankUp'];
-  notifyLevelComplete: ReturnType<typeof useNotifications>['notifyLevelComplete'];
-  removeNotification: (id: string) => void;
-  clearNotifications: () => void;
-}
+const NotificationContext = createContext(undefined);
 
-const NotificationContext = createContext<NotificationContextType | undefined>(undefined);
-
-export const NotificationProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const NotificationProvider = ({ children }: { children: any }) => {
   const {
     notifications,
     notifyAchievement,
@@ -37,7 +28,7 @@ export const NotificationProvider: React.FC<{ children: React.ReactNode }> = ({ 
     >
       {children}
       <View style={{ position: 'absolute', top: 0, left: 0, right: 0 }}>
-        {notifications.map(notification => (
+        {notifications.map((notification: any) => (
           <NotificationToast
             key={notification.id}
             notification={notification}

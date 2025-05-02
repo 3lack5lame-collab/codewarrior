@@ -1,9 +1,24 @@
 import React, { createContext, useContext } from 'react';
 import { useProgress } from '../hooks/useProgress';
 
-const ProgressContext = createContext<ReturnType<typeof useProgress> | undefined>(undefined);
+// Define the type explicitly
+type ProgressContextType = {
+  userProgress: any;
+  loading: boolean;
+  completedLevels: number[];
+  getRankProgress: () => Promise<any>;
+  getCourseProgress: (courseId: number) => Promise<any>;
+  completeLevel: (levelId: number) => Promise<any>;
+  isLevelUnlocked: (levelId: number) => Promise<boolean>;
+  getCareerRecommendations: () => Promise<string[]>;
+  getRequiredSkillsForNextRank: () => Promise<string[]>;
+  updateProgress: (updates: any) => Promise<any>;
+};
 
-export const ProgressProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+// Create context without type arguments
+const ProgressContext = createContext(undefined as unknown as ProgressContextType);
+
+export const ProgressProvider = ({ children }: { children: any }) => {
   const progress = useProgress();
 
   return (

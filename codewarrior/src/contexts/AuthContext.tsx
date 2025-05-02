@@ -11,9 +11,9 @@ interface AuthContextType {
   updateProfile: (profile: { username?: string; avatarUrl?: string }) => Promise<{ success: boolean; error: Error | null }>;
 }
 
-const AuthContext = createContext<AuthContextType | undefined>(undefined);
+const AuthContext = createContext<any>(undefined);
 
-export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const AuthProvider = ({ children }: { children: any }) => {
   const [user, setUser] = useState<AuthUser | null>(null);
   const [loading, setLoading] = useState(true);
   const authService = new AuthService();
@@ -23,7 +23,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     const initializeAuth = async () => {
       try {
         const sessionRestored = await authService.restoreSession();
-        
+
         if (sessionRestored) {
           const { user: currentUser } = await authService.getCurrentUser();
           setUser(currentUser);
@@ -42,11 +42,11 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     setLoading(true);
     try {
       const { user: newUser, error } = await authService.signUp(email, password);
-      
+
       if (!error) {
         setUser(newUser);
       }
-      
+
       return { error };
     } finally {
       setLoading(false);
@@ -57,11 +57,11 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     setLoading(true);
     try {
       const { user: signedInUser, error } = await authService.signIn(email, password);
-      
+
       if (!error) {
         setUser(signedInUser);
       }
-      
+
       return { error };
     } finally {
       setLoading(false);
@@ -82,11 +82,11 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     setLoading(true);
     try {
       const { error } = await authService.signOut();
-      
+
       if (!error) {
         setUser(null);
       }
-      
+
       return { error };
     } finally {
       setLoading(false);
@@ -97,7 +97,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     setLoading(true);
     try {
       const result = await authService.updateProfile(profile);
-      
+
       if (result.success && user) {
         // Update local user state with new profile data
         setUser({
@@ -106,7 +106,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
           ...(profile.avatarUrl && { avatarUrl: profile.avatarUrl }),
         });
       }
-      
+
       return result;
     } finally {
       setLoading(false);
